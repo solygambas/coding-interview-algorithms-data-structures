@@ -8,29 +8,40 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function trim(string) {
-  return string.replace(/[^\w]/g, "").toLowerCase();
-}
+// function buildCharMap(string) {
+//   charMap = {};
+//   for (let char of string.replace(/[^\w]/g, "").toLowerCase()) {
+//     charMap[char] = charMap[char] + 1 || 1;
+//   }
+//   return charMap;
+// }
 
-function mapping(string) {
-  charMap = {};
-  for (let char of string) {
-    charMap[char] = charMap[char] + 1 || 1;
-  }
-  return charMap;
-}
+// function anagrams(stringA, stringB) {
+//   const aCharMap = buildCharMap(stringA);
+//   const bCharMap = buildCharMap(stringB);
+//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     return false;
+//   }
+//   for (let char in aCharMap) {
+//     if (aCharMap[char] !== bCharMap[char]) {
+//       return false;
+//     }
+//   }
+//   return true;
+//   // const shallowCompare =
+//   //   Object.keys(aCharMap).length === Object.keys(bCharMap).length &&
+//   //   Object.keys(aCharMap).every(
+//   //     (key) => bCharMap.hasOwnProperty(key) && aCharMap[key] === bCharMap[key]
+//   //   );
+//   // return shallowCompare;
+// }
 
 function anagrams(stringA, stringB) {
-  const cleanedStringA = trim(stringA);
-  const cleanedStringB = trim(stringB);
-  const indexA = mapping(cleanedStringA);
-  const indexB = mapping(cleanedStringB);
-  const shallowCompare =
-    Object.keys(indexA).length === Object.keys(indexB).length &&
-    Object.keys(indexA).every(
-      (key) => indexB.hasOwnProperty(key) && indexA[key] === indexB[key]
-    );
-  return shallowCompare;
+  return cleanString(stringA) === cleanString(stringB);
+}
+
+function cleanString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
 }
 
 module.exports = anagrams;
