@@ -28,7 +28,7 @@
 // }
 
 // function steps(n) {
-//   for (let row = 0; row < n; row++) {
+//   for (let row = 0; row < n; row++) { // quadratic runtime (N^2): "the handshake problem" O(n^2)
 //     let stair = "";
 //     for (let column = 0; column < n; column++) {
 //       if (column <= row) {

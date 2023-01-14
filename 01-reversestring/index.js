@@ -13,7 +13,7 @@
 // function reverse(str) {
 //   let reversed = "";
 //   for (let character of str) {
-//     reversed = character + reversed;
+//     reversed = character + reversed; // linear runtime O(n)
 //   }
 //   return reversed;
 // }
